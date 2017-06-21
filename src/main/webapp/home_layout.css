@@ -1,0 +1,95 @@
+
+html, body {
+	height: auto;
+	background-color: lightgrey;
+}
+#medischadvies
+{
+    height:200px;
+    font-size:14pt;
+}
+
+#medischverwijzing
+{
+	height:200px;
+    font-size:14pt;
+}
+
+#imagesrc {
+	max-width: 200px;
+	max-height: 200px;
+}
+.sidenav {
+    display: none;
+    height: auto;
+    width: 800px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 1px;
+    border-width: 3px;
+	border-color: black;
+	border-style: solid;
+	border-left: 0;
+	
+}
+
+#kop {
+	background-color: blue;
+	padding: 1px;
+}
+
+#hoofd {
+	color: white;
+	width: 800px;
+	height: 30px;
+}
+
+#container {
+	background-color: white;
+	margin: auto;
+	width: 800px;
+	height: auto;
+	border-width: 3px;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+.p {
+	height: auto;
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+
+@media screen and (max-height: auto;) {
+  .sidenav {padding-top: 5px;}
+  .sidenav a {font-size: 10px;}
+}
+tr {
+	width: 400px;
+	background-color: Gray;
+	font-size: 80%
+	 
+}
+tr:hover {
+    background-color: green;
+}
+tr:active {
+    color: red;
+} 
+

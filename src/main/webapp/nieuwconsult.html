@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="nieuwconsult.js"></script>
+<link rel="stylesheet" type="text/css" href="nieuwconsult.css">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+<body style="overflow-x:auto;">
+<br>
+
+<div id="container"> 
+
+<div id="kop"><h2 id=hoofd><center>De Melanoom App</center></h2></div>
+
+<span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; Navigation</span>
+<div id="mySidenav" class="sidenav">
+  <a href="http://localhost:8080/melanoomapp/home.html">Home</a>
+  <a href="http://localhost:8080/melanoomapp/adviesvragen.html">Consult aanvragen</a>
+  <a href="http://localhost:8080/melanoomapp/overzichtconsults_g.html">Overzicht consults</a>
+    <a href="http://localhost:8080/melanoomapp/">Uitloggen</a>>
+</div>
+
+<h2>Consult aanvragen</h2> 
+
+<br>
+<div id=dvragenlijst>
+<form id="vragenlijst">
+<br>
+  <label id="locatiev">Waar zit de moedervlek?</label>
+  <input type="text" name="locatiea" id="locatiea"><br><br>
+
+  <label id="isvervormdv">Asymmetrie: Heeft de moedervlek aan beide kanten dezelfde vorm?</label>
+  <input type="checkbox" id="isvervormda" name="isvervormda" checked="checked" value="true"><br><br>
+  
+  <label id="isvaagv">Borders(randen): Heeft de moedervlek een vage, soms aflopende rand?</label>
+  <input type="checkbox" id="isvaaga" name="isvaaga" checked="checked" value="true"><br><br>
+  
+  <label id="kleurv"> Kleur: Bestaat de moedervlek uit verschillende kleuren?</label>
+  <input type="checkbox" id="kleura" name="kleura" checked="checked" value="true"><br><br>
+
+  <label id="diameterv">Wat de diameter van de moedervlek? (in mm)</label>
+   <input type="number" name="diametera" id="diametera"><br><br>
+  
+   <label id="jeukv">Jeukt de moedervlek aanhoudend langer dan 2 weken?</label>
+   <input type="checkbox" name="jeuka" id="jeuka" checked="checked" value="true"><br><br>
+   
+   <label id="bloedv">Bloed de moedervlek spontaan?</label>
+   <input type="checkbox" name="bloeda" id="bloeda" checked="checked" value="true"><br><br>
+   
+   <label id="zweertjev">Heeft de moedervlek een kostje of zweertje?</label>
+   <input type="checkbox" name="zweertjea" id="zweertjea" checked="checked" value="true"><br><br>
+   
+    <label id="viertigv">Is de moedervlek ontstaan na uw viertigste levensjaar?</label>
+   <input type="checkbox" name="viertiga" id="viertiga" checked="checked" value="true"><br><br>
+   
+   <label id="srcv">Geef de link van een foto van uw moedervlek:</label>
+   <input type="text" name="srca" id="srca"><br>
+   
+   <img src="" id="imagesrc"><br>
+   
+   
+</form>
+<button id="versturen" name="versturen" >Verstuur consult</button></div>
+<br>
+</div>
+</body>
+</html> 

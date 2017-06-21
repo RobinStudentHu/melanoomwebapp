@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="adviesvragen.js"></script>
+
+<link rel="stylesheet" type="text/css" href="home_layout.css">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+
+<body style="overflow-x:auto;">
+<br>
+<div id="container"> 
+
+<div id="kop"><h2 id=hoofd><center>De Melanoom App</center></h2></div>
+
+<span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; Navigation</span>
+
+<div id="mySidenav" class="sidenav">
+  <a href="http://localhost:8080/melanoomapp/home.html">Home</a>
+  <a href="http://localhost:8080/melanoomapp/adviesvragen.html">Consult aanvragen</a>
+  <a href="http://localhost:8080/melanoomapp/overzichtconsults_g.html">Overzicht consults</a>
+    <a href="http://localhost:8080/melanoomapp/">Uitloggen</a>
+</div>
+  
+<p>Hieronder bevind zich een lijst van moedervlekken waar u al eens consult voor hebt aan gevraagd.<br>
+Mocht u een vervolg consult aanvragen, druk dan op de knop "nieuw consult". <br>
+Anders kunt u een nieuwe consult maken voor een nieuwe moedervlek; </p>
+
+<table id=moedervlekken>
+<tr>	
+	<th id="moedervlekID">MoedervlekID   </th>
+	<th id="locatie">Locatie   </th>
+	<th id="groote">Groote in milimeter    </th>
+	<th id="laaste consult">Laaste consult</th>
+	</tr>
+	</table>
+
+<br>
+<div><button id="nieuwconsult">Consult aanvragen</button></div>
+</div>
+</body>
+</html> 
