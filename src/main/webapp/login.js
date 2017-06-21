@@ -6,15 +6,15 @@ window.onload = function initPage() {
 function inloggen() {
 	var data = $("#inloggen").serialize();
 	console.log(data);
-	$.post("http://localhost:8080/melanoomapp/restservices/moedervlekken/inloggen", data, function(response) {
+	$.post("/melanoomapp/restservices/moedervlekken/inloggen", data, function(response) {
 		var check = response.check
 		if (check) {
 	    localStorage.setItem("gebruikersnaam", response.gebruiker);
 	    if (response.gebruiker == "Admin"){
-		document.location.href = "http://localhost:8080/melanoomapp/home_deskundige.html";
+		document.location.href = "/melanoomapp/home_deskundige.html";
 		}
 	    else{
-	     document.location.href = "http://localhost:8080/melanoomapp/home.html";
+	     document.location.href = "/melanoomapp/home.html";
 	    }
 		}
 		else {

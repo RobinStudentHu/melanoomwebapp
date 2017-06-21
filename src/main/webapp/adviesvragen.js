@@ -5,7 +5,7 @@ window.onload = function initPage(){
 	Buttonopslaan.addEventListener("click", nieuwconsult);
 	
 console.log(gebruikersnaam);
-$.post("http://localhost:8080/melanoomapp/restservices/moedervlekken/getableselect/" + gebruikersnaam, function(response) {
+$.post("/melanoomapp/restservices/moedervlekken/getableselect/" + gebruikersnaam, function(response) {
 $.each(response, function(z, y) {
 		$("#moedervlekken").append(
 				"<tr><td>" + y.moedervlekid + "   </td>" + "<td>" + y.locatie
@@ -19,7 +19,7 @@ $.each(response, function(z, y) {
 }
 
 function nieuwconsult(){
-	document.location.href = "http://localhost:8080/melanoomapp/nieuwconsult.html";
+	document.location.href = "/melanoomapp/nieuwconsult.html";
 }
 
 function openNav() {

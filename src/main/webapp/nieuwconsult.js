@@ -16,10 +16,10 @@ function imageset() {
 function consultversturen(){	
 	gebruikersnaam = localStorage.getItem("gebruikersnaam");
 	var data = $("#vragenlijst").serialize();
-	$.post("http://localhost:8080/melanoomapp/restservices/moedervlekken/dvragenlijst/"+ gebruikersnaam, data, function(response) {
+	$.post("/melanoomapp/restservices/moedervlekken/dvragenlijst/"+ gebruikersnaam, data, function(response) {
 		alert(response.message);
 	});
-	document.location.href = "http://localhost:8080/melanoomapp/home.html";
+	document.location.href = "/melanoomapp/home.html";
 }
 
 function openNav() {

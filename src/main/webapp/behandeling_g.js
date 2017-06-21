@@ -1,6 +1,6 @@
 window.onload = function initPage(){
 	var sessie = localStorage.getItem("Psessieid")
-    $.getJSON("http://localhost:8080/melanoomapp/restservices/moedervlekken/getVoltooidebehandelinginfo/"+sessie, function(response) {
+    $.getJSON("/melanoomapp/restservices/moedervlekken/getVoltooidebehandelinginfo/"+sessie, function(response) {
 	console.log(response);
 	document.getElementById('sessieid').append(" " + response.sessieid);
 	document.getElementById('gebruikersnaam').append(" " + response.gebruikersnaam );

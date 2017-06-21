@@ -1,6 +1,6 @@
 window.onload = function initPage(){
 	var gebruiker = localStorage.getItem("gebruikersnaam");
-	$.getJSON("http://localhost:8080/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(response) {
+	$.getJSON("/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(response) {
 	console.log(response);
 $.each(response, function(z, y) {
 	
@@ -26,12 +26,12 @@ function overzicht() {
 	var index = JSON.parse(event.target.value);
 	var gebruiker = localStorage.getItem("gebruikersnaam");
 			
-	$.getJSON("http://localhost:8080/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(
+	$.getJSON("/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(
 			data) {
 		$.each(data, function(z, y) {
 			if (Number(z) == Number(index)) {
 				 localStorage.setItem("Psessieid", y.sessieid);
-				 document.location.href = "http://localhost:8080/melanoomapp/behandeling_g.html";
+				 document.location.href = "/melanoomapp/behandeling_g.html";
 			}
 		});
 	});
