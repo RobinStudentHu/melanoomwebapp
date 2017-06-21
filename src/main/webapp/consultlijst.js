@@ -1,6 +1,6 @@
 window.onload = function initPage(){
 	
-	$.getJSON("/melanoomapp/restservices/moedervlekken/getconsultlijst", function(response) {
+	$.getJSON("https://ipass-melanoomapp.herokuapp.com/restservices/moedervlekken/getconsultlijst", function(response) {
 	console.log(response);
 $.each(response, function(z, y) {
 		$("#consult").append(
@@ -25,12 +25,12 @@ function closeNav() {
 function behandel() {
 	var index = JSON.parse(event.target.value);
 
-	$.getJSON("/melanoomapp/restservices/moedervlekken/getconsultlijst", function(
+	$.getJSON("https://ipass-melanoomapp.herokuapp.com/restservices/moedervlekken/getconsultlijst", function(
 			data) {
 		$.each(data, function(z, y) {
 			if (Number(z) == Number(index)) {
 				 localStorage.setItem("Bsessieid", y.sessieid);
-				 document.location.href = "/melanoomapp/behandeling.html";
+				 document.location.href = "https://ipass-melanoomapp.herokuapp.com/behandeling.html";
 			}
 		});
 	});

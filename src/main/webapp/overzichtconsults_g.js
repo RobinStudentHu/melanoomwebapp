@@ -1,6 +1,6 @@
 window.onload = function initPage(){
 	var gebruiker = localStorage.getItem("gebruikersnaam");
-	$.getJSON("/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(response) {
+	$.getJSON("https://ipass-melanoomapp.herokuapp.com/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(response) {
 	console.log(response);
 $.each(response, function(z, y) {
 	
@@ -26,12 +26,12 @@ function overzicht() {
 	var index = JSON.parse(event.target.value);
 	var gebruiker = localStorage.getItem("gebruikersnaam");
 			
-	$.getJSON("/melanoomapp/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(
+	$.getJSON("https://ipass-melanoomapp.herokuapp.com/restservices/moedervlekken/getvoltooidesessie/"+gebruiker, function(
 			data) {
 		$.each(data, function(z, y) {
 			if (Number(z) == Number(index)) {
 				 localStorage.setItem("Psessieid", y.sessieid);
-				 document.location.href = "/melanoomapp/behandeling_g.html";
+				 document.location.href = "https://ipass-melanoomapp.herokuapp.com/behandeling_g.html";
 			}
 		});
 	});
