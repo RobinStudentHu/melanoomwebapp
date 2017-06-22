@@ -1,25 +1,25 @@
 package nl.hu.v1wac.melanoomapp.model;
 
 public class BehandelingGebruiker {
-	public Sessie sessie;
-	public Gebruiker gebruikersnaam;
-	public String datumafronding;
-	
-	public BehandelingGebruiker(Sessie sessie, Gebruiker gebruikersnaam, String datumafronding){
+	private Sessie sessie;
+	private Gebruiker gebruiker;
+	private String datumafronding;
+
+	public BehandelingGebruiker(Sessie sessie, Gebruiker gebruiker, String datumafronding) {
 		this.sessie = sessie;
-		this.gebruikersnaam = gebruikersnaam;
+		this.gebruiker = gebruiker;
 		this.datumafronding = datumafronding;
 	}
-	
-	public Sessie getSessie(){
+
+	public Sessie getSessie() {
 		return sessie;
 	}
-	
-	public Gebruiker getGebruiker(){
-		return gebruikersnaam;
+
+	public Gebruiker getGebruiker() {
+		return gebruiker;
 	}
-	
-	public String getdatumafronding(){
+
+	public String getdatumafronding() {
 		return datumafronding;
 	}
 

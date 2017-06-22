@@ -5,27 +5,27 @@ public class VragenLijst {
 	public Sessie sessie;
 	public String vragen;
 	public String antwoorden;
-	
-	public VragenLijst(int vragenLijstid, Sessie sessie, String vragen, String antwoorden){
+
+	public VragenLijst(int vragenLijstid, Sessie sessie, String vragen, String antwoorden) {
 		this.vragenlijstid = vragenLijstid;
 		this.sessie = sessie;
 		this.vragen = vragen;
 		this.antwoorden = antwoorden;
 	}
-	
-	public int getVragenLijstID(){
+
+	public int getVragenLijstID() {
 		return vragenlijstid;
 	}
-	
-	public Sessie getSessie(){
+
+	public Sessie getSessie() {
 		return sessie;
 	}
-	
-	public String getVragen(){
+
+	public String getVragen() {
 		return vragen;
 	}
-	
-	public String getAntwoorden(){
+
+	public String getAntwoorden() {
 		return antwoorden;
 	}
 }

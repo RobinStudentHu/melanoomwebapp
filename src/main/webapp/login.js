@@ -22,5 +22,3 @@ function inloggen() {
 		}
 		});		
 }
-		
-//<div id="footer"><center><a href="http://localhost:8080/melanoomapp/home.html"><button id="login" name="login" >Login</button></a></center></div>

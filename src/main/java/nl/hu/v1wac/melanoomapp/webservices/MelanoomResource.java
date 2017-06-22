@@ -45,7 +45,6 @@ public class MelanoomResource {
 
 	@GET
 	@Path("/getAllmoedervlekken")
-	// @RolesAllowed("admin")
 	@Produces("application/json")
 	public String getMoedervlekken() {
 		System.out.println("test");
@@ -66,32 +65,32 @@ public class MelanoomResource {
 		return array.toString();
 	}
 
-	//gethandelinginfo
 	@Path("/getVoltooidebehandelinginfo/{id}")
 	@GET
 	@Produces("application/json")
+	// geeft informatie van voltooide behandelingen voor de gebruiker
 	public String getVoltooidebehandelinginfo(@PathParam("id") int sessieid) {
 		SessieDAO sdao = new SessieDAO();
 		Sessie s = sdao.getSessiemetID(sessieid);
-		
+
 		GebruikerSessieDAO gsd = new GebruikerSessieDAO();
 		GebruikerSessie gs = gsd.getGebruikerSessie(sessieid);
-		
+
 		Moedervlek_AfbeeldingMoedervlekDAO mdao = new Moedervlek_AfbeeldingMoedervlekDAO();
 		Moedervlek_AfbeeldingMoedervlek mam = mdao.getMoedervlekID(s.getMoedervlek().getMoedervlekID());
-		
+
 		VragenLijstDAO vdao = new VragenLijstDAO();
 		VragenLijst vl = vdao.getSessieID(sessieid);
-		
+
 		BehandelingDAO bdao = new BehandelingDAO();
 		Behandeling b = bdao.getBehandlingmetSessieID(sessieid);
-		
+
 		String vragenlijst = vl.getVragen();
 		String antwoordenlijst = vl.getAntwoorden();
-		
+
 		String[] vragenlijstSplit = vragenlijst.split("/");
 		String[] antwoordenlijstSplit = antwoordenlijst.split("/");
-		
+
 		int vragenlijstlengte = vragenlijstSplit.length;
 
 		JsonObjectBuilder job = Json.createObjectBuilder();
@@ -104,53 +103,53 @@ public class MelanoomResource {
 		job.add("lengtevragen", vragenlijstlengte);
 		job.add("ma", b.getMedischeAdvies());
 		job.add("mv", b.getMedischeVerwijzing());
-	   if (vragenlijstlengte == 9){
-	    	job.add("vraag1", vragenlijstSplit[0]);
-	    	job.add("vraag2", vragenlijstSplit[1]);
-	    	job.add("vraag3", vragenlijstSplit[2]);
-	    	job.add("vraag4", vragenlijstSplit[3]);
-	    	job.add("vraag5", vragenlijstSplit[4]);
-	    	job.add("vraag6", vragenlijstSplit[5]);
-	    	job.add("vraag7", vragenlijstSplit[6]);
-	    	job.add("vraag8", vragenlijstSplit[7]);
-	    	job.add("vraag9", vragenlijstSplit[8]);
-	    	job.add("antwoord1", antwoordenlijstSplit[0]);
-	    	job.add("antwoord2", antwoordenlijstSplit[1]);
-	    	job.add("antwoord3", antwoordenlijstSplit[2]);
-	    	job.add("antwoord4", antwoordenlijstSplit[3]);
-	    	job.add("antwoord5", antwoordenlijstSplit[4]);
-	    	job.add("antwoord6", antwoordenlijstSplit[5]);
-	    	job.add("antwoord7", antwoordenlijstSplit[6]);
-	    	job.add("antwoord8", antwoordenlijstSplit[7]);
-	    	job.add("antwoord9", antwoordenlijstSplit[8]);
-	   }	
+		if (vragenlijstlengte == 9) {
+			job.add("vraag1", vragenlijstSplit[0]);
+			job.add("vraag2", vragenlijstSplit[1]);
+			job.add("vraag3", vragenlijstSplit[2]);
+			job.add("vraag4", vragenlijstSplit[3]);
+			job.add("vraag5", vragenlijstSplit[4]);
+			job.add("vraag6", vragenlijstSplit[5]);
+			job.add("vraag7", vragenlijstSplit[6]);
+			job.add("vraag8", vragenlijstSplit[7]);
+			job.add("vraag9", vragenlijstSplit[8]);
+			job.add("antwoord1", antwoordenlijstSplit[0]);
+			job.add("antwoord2", antwoordenlijstSplit[1]);
+			job.add("antwoord3", antwoordenlijstSplit[2]);
+			job.add("antwoord4", antwoordenlijstSplit[3]);
+			job.add("antwoord5", antwoordenlijstSplit[4]);
+			job.add("antwoord6", antwoordenlijstSplit[5]);
+			job.add("antwoord7", antwoordenlijstSplit[6]);
+			job.add("antwoord8", antwoordenlijstSplit[7]);
+			job.add("antwoord9", antwoordenlijstSplit[8]);
+		}
 		return job.build().toString();
 	}
-	
-	
-	//gethandelinginfo
+
 	@Path("/getbehandelinginfo/{id}")
 	@GET
 	@Produces("application/json")
+	// geeft de uitkomst van het formulier wat de gebruiker heeft ingevuld voor
+	// het consult
 	public String getbehandelinginfo(@PathParam("id") int sessieid) {
 		SessieDAO sdao = new SessieDAO();
 		Sessie s = sdao.getSessiemetID(sessieid);
-		
+
 		GebruikerSessieDAO gsd = new GebruikerSessieDAO();
 		GebruikerSessie gs = gsd.getGebruikerSessie(sessieid);
-		
+
 		Moedervlek_AfbeeldingMoedervlekDAO mdao = new Moedervlek_AfbeeldingMoedervlekDAO();
 		Moedervlek_AfbeeldingMoedervlek mam = mdao.getMoedervlekID(s.getMoedervlek().getMoedervlekID());
-		
+
 		VragenLijstDAO vdao = new VragenLijstDAO();
 		VragenLijst vl = vdao.getSessieID(sessieid);
-		
+
 		String vragenlijst = vl.getVragen();
 		String antwoordenlijst = vl.getAntwoorden();
-		
+
 		String[] vragenlijstSplit = vragenlijst.split("/");
 		String[] antwoordenlijstSplit = antwoordenlijst.split("/");
-		
+
 		int vragenlijstlengte = vragenlijstSplit.length;
 
 		JsonObjectBuilder job = Json.createObjectBuilder();
@@ -161,33 +160,31 @@ public class MelanoomResource {
 		job.add("moedervlekid", s.getMoedervlek().getMoedervlekID());
 		job.add("afbeelding", mam.getAfbeeldingMoedervlek().getAfbeelding());
 		job.add("lengtevragen", vragenlijstlengte);
-	   if (vragenlijstlengte == 9){
-	    	job.add("vraag1", vragenlijstSplit[0]);
-	    	job.add("vraag2", vragenlijstSplit[1]);
-	    	job.add("vraag3", vragenlijstSplit[2]);
-	    	job.add("vraag4", vragenlijstSplit[3]);
-	    	job.add("vraag5", vragenlijstSplit[4]);
-	    	job.add("vraag6", vragenlijstSplit[5]);
-	    	job.add("vraag7", vragenlijstSplit[6]);
-	    	job.add("vraag8", vragenlijstSplit[7]);
-	    	job.add("vraag9", vragenlijstSplit[8]);
-	    	job.add("antwoord1", antwoordenlijstSplit[0]);
-	    	job.add("antwoord2", antwoordenlijstSplit[1]);
-	    	job.add("antwoord3", antwoordenlijstSplit[2]);
-	    	job.add("antwoord4", antwoordenlijstSplit[3]);
-	    	job.add("antwoord5", antwoordenlijstSplit[4]);
-	    	job.add("antwoord6", antwoordenlijstSplit[5]);
-	    	job.add("antwoord7", antwoordenlijstSplit[6]);
-	    	job.add("antwoord8", antwoordenlijstSplit[7]);
-	    	job.add("antwoord9", antwoordenlijstSplit[8]);
-	   }	
+		if (vragenlijstlengte == 9) {
+			job.add("vraag1", vragenlijstSplit[0]);
+			job.add("vraag2", vragenlijstSplit[1]);
+			job.add("vraag3", vragenlijstSplit[2]);
+			job.add("vraag4", vragenlijstSplit[3]);
+			job.add("vraag5", vragenlijstSplit[4]);
+			job.add("vraag6", vragenlijstSplit[5]);
+			job.add("vraag7", vragenlijstSplit[6]);
+			job.add("vraag8", vragenlijstSplit[7]);
+			job.add("vraag9", vragenlijstSplit[8]);
+			job.add("antwoord1", antwoordenlijstSplit[0]);
+			job.add("antwoord2", antwoordenlijstSplit[1]);
+			job.add("antwoord3", antwoordenlijstSplit[2]);
+			job.add("antwoord4", antwoordenlijstSplit[3]);
+			job.add("antwoord5", antwoordenlijstSplit[4]);
+			job.add("antwoord6", antwoordenlijstSplit[5]);
+			job.add("antwoord7", antwoordenlijstSplit[6]);
+			job.add("antwoord8", antwoordenlijstSplit[7]);
+			job.add("antwoord9", antwoordenlijstSplit[8]);
+		}
 		return job.build().toString();
 	}
-	
 
 	@GET
 	@Path("/getAllsessies")
-	// @RolesAllowed("admin")
 	@Produces("application/json")
 	public String getSessies() {
 		System.out.println("test");
@@ -206,10 +203,9 @@ public class MelanoomResource {
 		JsonArray array = jab.build();
 		return array.toString();
 	}
-	
+
 	@Path("/inloggen")
 	@POST
-	// @RolesAllowed("user")
 	@Produces("application/json")
 	public String inloggen(@FormParam("gebruikersnaam") String gebruikersnaam,
 			@FormParam("wachtwoord") String wachtwoord) {
@@ -231,50 +227,50 @@ public class MelanoomResource {
 			return job.build().toString();
 		}
 	}
+
 	@Path("/getconsultlijst")
 	@GET
 	@Produces("application/json")
+	// geeft een lijst van alle consult verzoeken
 	public String getConsultlijst() {
 		GebruikerSessieDAO dao = new GebruikerSessieDAO();
 		List<GebruikerSessie> lijst = dao.getGebruikerSessieVoorDeskundige();
 		JsonArrayBuilder jab = Json.createArrayBuilder();
-		
-		for (GebruikerSessie s : lijst){	
-		JsonObjectBuilder job = Json.createObjectBuilder();
-		job.add("sessieid", s.getSessie().getSessieid());
-		job.add("gebruikersnaam", s.getGebruiker().getGebruikersnaam());
-		job.add("datum", s.getDatum());
-		jab.add(job);
+
+		for (GebruikerSessie s : lijst) {
+			JsonObjectBuilder job = Json.createObjectBuilder();
+			job.add("sessieid", s.getSessie().getSessieid());
+			job.add("gebruikersnaam", s.getGebruiker().getGebruikersnaam());
+			job.add("datum", s.getDatum());
+			jab.add(job);
 		}
 
 		JsonArray array = jab.build();
 		return array.toString();
 	}
-	//getvoltooidesessie
-	
+
 	@Path("/getvoltooidesessie/{id}")
 	@GET
 	@Produces("application/json")
-	public String getvoltooideSessielijst(@PathParam ("id") String gebruikersnaam) {
-		
+	public String getvoltooideSessielijst(@PathParam("id") String gebruikersnaam) {
+
 		SessieDAO dao = new SessieDAO();
 		List<Sessie> lijst = dao.geefCompleteSessieGebruiker(gebruikersnaam);
 		JsonArrayBuilder jab = Json.createArrayBuilder();
-		
+
 		BehandlingGebruikerDAO bdao = new BehandlingGebruikerDAO();
-		
-		for (Sessie s : lijst){	
-		JsonObjectBuilder job = Json.createObjectBuilder();
-		job.add("sessieid", s.getSessieid());
-		job.add("moedervlekid", s.getMoedervlek().getMoedervlekID());
-		job.add("datum", bdao.getBehandlingGebruikermetSessieID(s.getSessieid()).getdatumafronding());
-		jab.add(job);
+
+		for (Sessie s : lijst) {
+			JsonObjectBuilder job = Json.createObjectBuilder();
+			job.add("sessieid", s.getSessieid());
+			job.add("moedervlekid", s.getMoedervlek().getMoedervlekID());
+			job.add("datum", bdao.getBehandlingGebruikermetSessieID(s.getSessieid()).getdatumafronding());
+			jab.add(job);
 		}
 
 		JsonArray array = jab.build();
 		return array.toString();
 	}
-	
 
 	@Path("/getableselect/{id}")
 	@POST
@@ -285,193 +281,97 @@ public class MelanoomResource {
 		List<tableselect> tt = tdao.getTableselectGebruiker(gebruikersnaam);
 		JsonArrayBuilder jab = Json.createArrayBuilder();
 
-
 		for (tableselect c : tt) {
-			if (c.getLaasteDatum() == null){
-			JsonObjectBuilder job = Json.createObjectBuilder();
-			    job.add("moedervlekid", c.getMoedervlekID().getMoedervlekID());
-			    job.add("locatie", c.getMoedervlekID().getLocatie());
-			    job.add("groote", c.getMoedervlekID().getGroote());
-			    job.add("laastedatum", "19-21-1997");
-			  
-			    jab.add(job);
-		}
-		else {
-			JsonObjectBuilder job = Json.createObjectBuilder();
-		    job.add("moedervlekid", c.getMoedervlekID().getMoedervlekID());
-		    job.add("locatie", c.getMoedervlekID().getLocatie());
-		    job.add("groote", c.getMoedervlekID().getGroote());
-		    job.add("laastedatum", "19-21-1997");
-		  
-		    jab.add(job);
-		}
+			if (c.getLaasteDatum() == null) {
+				JsonObjectBuilder job = Json.createObjectBuilder();
+				job.add("moedervlekid", c.getMoedervlekID().getMoedervlekID());
+				job.add("locatie", c.getMoedervlekID().getLocatie());
+				job.add("groote", c.getMoedervlekID().getGroote());
+				job.add("laastedatum", "19-21-1997");
+
+				jab.add(job);
+			} else {
+				JsonObjectBuilder job = Json.createObjectBuilder();
+				job.add("moedervlekid", c.getMoedervlekID().getMoedervlekID());
+				job.add("locatie", c.getMoedervlekID().getLocatie());
+				job.add("groote", c.getMoedervlekID().getGroote());
+				job.add("laastedatum", "19-21-1997");
+
+				jab.add(job);
+			}
 		}
 
 		JsonArray array = jab.build();
 		return array.toString();
-		}
-	
-	//verzendbehandeling
-		@Path("/verzendbehandeling/{id}/{id2}")
-		@POST
-		@Produces("application/json")
-		public String verzendbehandeling(@PathParam("id") int sessieid, @PathParam("id2") String gebruikersnaam, @FormParam("medischadvies") String medischadvies, @FormParam("medischverwijzing") String medischverwijzing) {
-			BehandelingDAO bdao = new BehandelingDAO();
-			bdao.insertBehandling(sessieid, medischadvies, medischverwijzing);
-			
-			Date date = Calendar.getInstance().getTime();
-	        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	        String today = formatter.format(date);
-	        
-			BehandlingGebruikerDAO bgdao = new BehandlingGebruikerDAO();
-			bgdao.insertBehandlingGebruiker(sessieid, gebruikersnaam, today);
-			
-			JsonObjectBuilder job = Json.createObjectBuilder();
-			job.add("message", "Behandeling opgeslagen!");
-			return job.build().toString();
-		}
-	
+	}
+
+	@Path("/verzendbehandeling/{id}/{id2}")
+	@POST
+	@Produces("application/json")
+	// Slaat de behandeling op in de database
+	public String verzendbehandeling(@PathParam("id") int sessieid, @PathParam("id2") String gebruikersnaam,
+			@FormParam("medischadvies") String medischadvies,
+			@FormParam("medischverwijzing") String medischverwijzing) {
+		BehandelingDAO bdao = new BehandelingDAO();
+		bdao.insertBehandling(sessieid, medischadvies, medischverwijzing);
+
+		Date date = Calendar.getInstance().getTime();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String today = formatter.format(date);
+
+		BehandlingGebruikerDAO bgdao = new BehandlingGebruikerDAO();
+		bgdao.insertBehandlingGebruiker(sessieid, gebruikersnaam, today);
+
+		JsonObjectBuilder job = Json.createObjectBuilder();
+		job.add("message", "Behandeling opgeslagen!");
+		return job.build().toString();
+	}
+
 	@Path("/dvragenlijst/{id}")
 	@POST
-	// @RolesAllowed("user")
 	@Produces("application/json")
+	// slaat de sessie/consult op in de database
 	public String dvragenlijst(@PathParam("id") String gebruikersnaam, @FormParam("locatiea") String locatie,
-			@FormParam("isvervormda") boolean isvervormd, @FormParam("isvaaga") boolean isvaaga, 
-		@FormParam("kleura") boolean heeftverkleuring, @FormParam("diametera") int groote, @FormParam("jeuka") boolean jeuk,
-		@FormParam("bloeda") boolean bloeda, @FormParam("zweertjea") boolean zweertje, @FormParam("viertiga") boolean viertig,
-		@FormParam("srca") String scra){
-		
+			@FormParam("isvervormda") boolean isvervormd, @FormParam("isvaaga") boolean isvaaga,
+			@FormParam("kleura") boolean heeftverkleuring, @FormParam("diametera") int groote,
+			@FormParam("jeuka") boolean jeuk, @FormParam("bloeda") boolean bloeda,
+			@FormParam("zweertjea") boolean zweertje, @FormParam("viertiga") boolean viertig,
+			@FormParam("srca") String scra) {
+
 		MoedervlekDAO mdao = new MoedervlekDAO();
 		Moedervlek m = mdao.insertMoedervlek(locatie, groote, heeftverkleuring, isvervormd);
-		
+
 		SessieDAO sdao = new SessieDAO();
 		Sessie s = sdao.insertSessie(m.getMoedervlekID(), false, true);
-		
+
 		AfbeeldingMoedervlekDAO afdao = new AfbeeldingMoedervlekDAO();
 		AfbeeldingMoedervlek ak = afdao.insertAfbeeldingMoedervlek(scra, s.getSessieid());
-		
+
 		String vragen = " Waar zit de moedervlek?/Asymmetrie: Heeft de moedervlek aan beide kanten dezelfde vorm?/"
 				+ "Heeft de moedervlek een vage, soms aflopende rand?/Kleur: Bestaat de moedervlek uit verschillende kleuren?/"
 				+ "Diameter: Hoe groot is de moedervlek in mm?/"
 				+ "Jeukt de moedervlek aanhoudend langer dan 2 weken?/Bloed de moedervlek spontaan?/"
 				+ "Heeft de moedervlek een kostje of zweertje?/Is de moedervlek ontstaan na uw viertigste levensjaar?";
-		
-		String antwoorden = locatie + "/" + isvervormd + "/" + isvaaga + "/" + heeftverkleuring + "/" + groote
-				+ "/" + jeuk + "/" + bloeda + "/" + zweertje + "/" + viertig;
-		
+
+		String antwoorden = locatie + "/" + isvervormd + "/" + isvaaga + "/" + heeftverkleuring + "/" + groote + "/"
+				+ jeuk + "/" + bloeda + "/" + zweertje + "/" + viertig;
+
 		VragenLijstDAO vdao = new VragenLijstDAO();
 		VragenLijst vt = vdao.insertVragenLijst(s.getSessieid(), vragen, antwoorden);
-		
+
 		Date date = Calendar.getInstance().getTime();
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String today = formatter.format(date);
-        
-        GebruikerSessieDAO gsdao = new GebruikerSessieDAO();
-        GebruikerSessie grs = gsdao.insertGebruikerSessie(s.getSessieid(), gebruikersnaam, today);
-        
-        Moedervlek_AfbeeldingMoedervlekDAO mamdao = new Moedervlek_AfbeeldingMoedervlekDAO();
-        Moedervlek_AfbeeldingMoedervlek mam = mamdao.insertMoedervlek_AfbeeldingMoedervlek(m.getMoedervlekID(), ak.getAfbeeldingMoedervlek(), today);
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String today = formatter.format(date);
+
+		GebruikerSessieDAO gsdao = new GebruikerSessieDAO();
+		GebruikerSessie grs = gsdao.insertGebruikerSessie(s.getSessieid(), gebruikersnaam, today);
+
+		Moedervlek_AfbeeldingMoedervlekDAO mamdao = new Moedervlek_AfbeeldingMoedervlekDAO();
+		Moedervlek_AfbeeldingMoedervlek mam = mamdao.insertMoedervlek_AfbeeldingMoedervlek(m.getMoedervlekID(),
+				ak.getAfbeeldingMoedervlek(), today);
 
 		JsonObjectBuilder job = Json.createObjectBuilder();
 		job.add("message", "toegevoegd");
 		return job.build().toString();
+	}
 }
-}
-
-	/*locatiea isvervormda isvaaga kleura diametera jeuka bloeda zweertjea
- 
-  viertiga srca
-}
-	
-	
-
-/*
- * @POST
- * 
- * @Path("/upload")
- * 
- * @Consumes(MediaType.MULTIPART_FORM_DATA) public Response uploadFile(
- * 
- * @FormDataParam("file") InputStream uploadedInputStream,
- * 
- * @FormDataParam("file") FormDataContentDisposition fileDetail) {
- * 
- * String uploadedFileLocation = "d://uploaded/" + fileDetail.getFileName();
- * 
- * // save it writeToFile(uploadedInputStream, uploadedFileLocation);
- * 
- * String output = "File uploaded to : " + uploadedFileLocation;
- * 
- * return Response.status(200).entity(output).build();
- * 
- * }
- * 
- * // save uploaded file to new location private void writeToFile(InputStream
- * uploadedInputStream, String uploadedFileLocation) {
- * 
- * try { OutputStream out = new FileOutputStream(new File(
- * uploadedFileLocation)); int read = 0; byte[] bytes = new byte[1024];
- * 
- * out = new FileOutputStream(new File(uploadedFileLocation)); while ((read =
- * uploadedInputStream.read(bytes)) != -1) { out.write(bytes, 0, read); }
- * out.flush(); out.close(); } catch (IOException e) {
- * 
- * e.printStackTrace(); }
- * 
- * } }
- * 
- * 
- * 
- * 
- * 
- * @WebServlet("/fileUpload")
- * 
- * @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1, // 1 MB maxFileSize =
- * 1024 * 1024 * 5, // 5 MB maxRequestSize = 1024 * 1024 * 10) // 10 MB public
- * class FileUploadController extends HttpServlet {
- * 
- * private static final long serialVersionUID = 1L;
- * 
- * protected void doPost(HttpServletRequest request, HttpServletResponse
- * response) throws ServletException, IOException { Part part =
- * request.getPart("blob"); String fileName = null; if (part != null) {
- * //writing blob fileName = request.getParameter("blobName"); part.
- * write("C:/Users/Robin van Vlijmen/Desktop/IPASS/melanoomapp/src/afbeeldingen"
- * + File.separator + fileName);
- * 
- * } else { //Writing image or file part = request.getPart("file"); fileName =
- * getFileName(part); part.
- * write("C:/Users/Robin van Vlijmen/Desktop/IPASS/melanoomapp/src/afbeeldingen"
- * + File.separator + fileName); }
- * 
- * // Extra logic to support multiple domain - you may want to remove this
- * response.setHeader("Access-Control-Allow-Origin", "*");
- * response.getWriter().print(fileName + " uploaded successfully"); }
- * 
- * private String getFileName(Part part) { String contentDisp =
- * part.getHeader("content-disposition");
- * System.out.println("content-disposition header= " + contentDisp); String[]
- * tokens = contentDisp.split(";"); for (String token : tokens) { if
- * (token.trim().startsWith("filename")) { return
- * token.substring(token.indexOf("=") + 2, token.length() - 1); } } return ""; }
- * }
- */
-
-// @Path("/afbeelding")
-// @POST
-// // @RolesAllowed("user")
-// @Produces("application/json")
-// public String Afbeelding(@FormParam("Afbeelding") Blob ls) {
-// AfbeeldingMoedervlek newMoedervlek = new
-// AfbeeldingMoedervlek("test",null,ls);
-// System.out.println(ls);
-// return AfbeeldingToJson("werkt").build().toString();
-// }
-//
-//
-// private JsonObjectBuilder AfbeeldingToJson(String c) {
-// System.out.println(c);
-// JsonObjectBuilder job = Json.createObjectBuilder();
-// job.add("id", c);
-// return job;
-// }

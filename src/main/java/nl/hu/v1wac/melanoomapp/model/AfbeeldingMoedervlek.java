@@ -8,11 +8,11 @@ public class AfbeeldingMoedervlek {
 	private Sessie desessie;
 	private String afbeelding;
 
-	public AfbeeldingMoedervlek(int afbeeldingid, String afbeelding, Sessie desessie){
-	this.afbeeldingid = afbeeldingid;
-	this.afbeelding = afbeelding;
-	this.desessie = desessie;
-}
+	public AfbeeldingMoedervlek(int afbeeldingid, String afbeelding, Sessie desessie) {
+		this.afbeeldingid = afbeeldingid;
+		this.afbeelding = afbeelding;
+		this.desessie = desessie;
+	}
 
 	public int getAfbeeldingMoedervlek() {
 		return afbeeldingid;
@@ -22,7 +22,7 @@ public class AfbeeldingMoedervlek {
 		return desessie;
 	}
 
-	public String getAfbeelding(){
+	public String getAfbeelding() {
 		return afbeelding;
 	}
 

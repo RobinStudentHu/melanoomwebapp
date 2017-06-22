@@ -11,8 +11,6 @@ $.each(response, function(z, y) {
 				"<tr><td>" + y.moedervlekid + "   </td>" + "<td>" + y.locatie
 						+ "   </td>" + "<td>" + y.groote + "   </td>" + "<td>" + y.laastedatum + "   </td>"
 						+ "</tr>");
-		//var Buttonselect = document.querySelector(("#GET" + z));
-		//Buttonselect.addEventListener("click", getoverzicht);
 
 	});
 });
