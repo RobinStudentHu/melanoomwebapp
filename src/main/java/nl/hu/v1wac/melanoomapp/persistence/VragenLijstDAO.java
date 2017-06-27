@@ -71,7 +71,6 @@ public class VragenLijstDAO extends BaseDAO {
 			stmt.executeUpdate(query);
 			con.close();
 
-
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
