@@ -40,7 +40,7 @@ public class Moedervlek_AfbeeldingMoedervlekDAO extends BaseDAO {
 				Moedervlek_AfbeeldingMoedervlek newMoedervlek_AfbeeldingMoedervlek = new Moedervlek_AfbeeldingMoedervlek(
 						s, a, datumaanmaking);
 				results.add(newMoedervlek_AfbeeldingMoedervlek);
-				con.commit();
+			
 				con.close();
 			}
 		} catch (SQLException sqle) {
@@ -73,7 +73,6 @@ public class Moedervlek_AfbeeldingMoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
-			con.commit();
 			con.close();
 
 		} catch (SQLException sqle) {
