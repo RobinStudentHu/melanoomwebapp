@@ -25,7 +25,6 @@ public class GebruikerDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
 
 			while (dbResultSet.next()) {
 				String gebruikersnaam = dbResultSet.getString("gebruikersnaam");
@@ -40,6 +39,8 @@ public class GebruikerDAO extends BaseDAO {
 				Gebruiker newGebruiker = new Gebruiker(gebruikersnaam, wachtwoord, rol, null, voornaam, tussenvoegsel,
 						achternaam);
 				results.add(newGebruiker);
+				
+				con.close();
 					}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

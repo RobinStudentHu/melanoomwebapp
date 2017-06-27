@@ -24,7 +24,6 @@ public class SessieDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
 
 			while (dbResultSet.next()) {
 				int sessieID = dbResultSet.getInt("sessieid");
@@ -37,6 +36,7 @@ public class SessieDAO extends BaseDAO {
 				Moedervlek mv = mdao.getMoedervlekmetID(moedervlekID);
 				Sessie newSessie = new Sessie(sessieID, mv, isBehandelt, isEerste);
 				results.add(newSessie);
+				con.close();
 				System.out.println(sessieID + " " + moedervlekID + " " + isBehandelt + " " + isEerste);
 			}
 		} catch (SQLException sqle) {

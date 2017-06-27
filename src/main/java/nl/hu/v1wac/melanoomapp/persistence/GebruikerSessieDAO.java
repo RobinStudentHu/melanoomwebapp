@@ -24,7 +24,6 @@ public class GebruikerSessieDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
 
 			while (dbResultSet.next()) {
 				int sessieID = dbResultSet.getInt("sessieid");
@@ -38,6 +37,7 @@ public class GebruikerSessieDAO extends BaseDAO {
 
 				GebruikerSessie newGebruikerSessie = new GebruikerSessie(si, g, date);
 				results.add(newGebruikerSessie);
+				con.close();
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
