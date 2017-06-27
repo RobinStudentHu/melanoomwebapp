@@ -34,6 +34,7 @@ public class AfbeeldingMoedervlekDAO extends BaseDAO {
 
 				AfbeeldingMoedervlek newAfbeeldingMoedervlek = new AfbeeldingMoedervlek(afbeeldingid, afbeelding, s);
 				results.add(newAfbeeldingMoedervlek);
+				con.close();
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -59,6 +60,7 @@ public class AfbeeldingMoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

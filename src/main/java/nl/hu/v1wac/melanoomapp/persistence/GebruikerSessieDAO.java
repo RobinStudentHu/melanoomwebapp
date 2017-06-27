@@ -37,6 +37,7 @@ public class GebruikerSessieDAO extends BaseDAO {
 
 				GebruikerSessie newGebruikerSessie = new GebruikerSessie(si, g, date);
 				results.add(newGebruikerSessie);
+				con.close();
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

@@ -37,6 +37,8 @@ public class VragenLijstDAO extends BaseDAO {
 
 				VragenLijst newVragenLijst = new VragenLijst(vragenlijstid, s, vragen, antwoorden);
 				results.add(newVragenLijst);
+				con.close();
+
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -67,6 +69,8 @@ public class VragenLijstDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.close();
+
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

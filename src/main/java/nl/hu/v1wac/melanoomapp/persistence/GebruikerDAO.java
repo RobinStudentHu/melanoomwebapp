@@ -39,6 +39,7 @@ public class GebruikerDAO extends BaseDAO {
 				Gebruiker newGebruiker = new Gebruiker(gebruikersnaam, wachtwoord, rol, null, voornaam, tussenvoegsel,
 						achternaam);
 				results.add(newGebruiker);
+				con.close();
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

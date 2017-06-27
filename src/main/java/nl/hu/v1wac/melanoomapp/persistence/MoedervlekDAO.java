@@ -33,6 +33,7 @@ public class MoedervlekDAO extends BaseDAO {
 
 				Moedervlek newMoedervlek = new Moedervlek(moedervlekID, locatie, groote, verkleuring, isvervormd);
 				results.add(newMoedervlek);
+				con.close();
 				System.out.println(moedervlekID + " " + locatie + " " + groote + " " + verkleuring + " " + isvervormd);
 			}
 		} catch (SQLException sqle) {
@@ -59,6 +60,7 @@ public class MoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

@@ -31,6 +31,8 @@ public class tableselectDAO extends BaseDAO {
 
 				tableselect newtableselect = new tableselect(m, laastedatum);
 				results.add(newtableselect);
+				con.close();
+
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

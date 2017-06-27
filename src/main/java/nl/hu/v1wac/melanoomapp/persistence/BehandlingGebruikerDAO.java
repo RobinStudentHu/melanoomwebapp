@@ -64,6 +64,7 @@ public class BehandlingGebruikerDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
