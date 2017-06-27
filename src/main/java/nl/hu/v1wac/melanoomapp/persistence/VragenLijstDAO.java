@@ -25,6 +25,7 @@ public class VragenLijstDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
+			con.close();
 
 			while (dbResultSet.next()) {
 				int vragenlijstid = dbResultSet.getInt("vragenlijstid");
@@ -37,7 +38,6 @@ public class VragenLijstDAO extends BaseDAO {
 
 				VragenLijst newVragenLijst = new VragenLijst(vragenlijstid, s, vragen, antwoorden);
 				results.add(newVragenLijst);
-				con.close();
 
 			}
 		} catch (SQLException sqle) {

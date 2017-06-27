@@ -22,6 +22,7 @@ public class tableselectDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
+			con.close();
 
 			while (dbResultSet.next()) {
 				int moedervlekid = dbResultSet.getInt("moedervlekid");
@@ -31,7 +32,6 @@ public class tableselectDAO extends BaseDAO {
 
 				tableselect newtableselect = new tableselect(m, laastedatum);
 				results.add(newtableselect);
-				con.close();
 
 			}
 		} catch (SQLException sqle) {

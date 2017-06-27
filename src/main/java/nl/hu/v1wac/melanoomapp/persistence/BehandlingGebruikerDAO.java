@@ -25,6 +25,7 @@ public class BehandlingGebruikerDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
+			con.close();
 
 			while (dbResultSet.next()) {
 				int sessieID = dbResultSet.getInt("sessieid");
@@ -38,7 +39,6 @@ public class BehandlingGebruikerDAO extends BaseDAO {
 				Gebruiker g = gdao.getGebruiker(gebruikersnaam);
 
 				BehandelingGebruiker newb = new BehandelingGebruiker(s, g, datumafronding);
-				con.close();
 				results.add(newb);
 			}
 		} catch (SQLException sqle) {
