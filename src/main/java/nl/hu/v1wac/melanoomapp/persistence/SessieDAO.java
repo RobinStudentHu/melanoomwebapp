@@ -79,6 +79,7 @@ public class SessieDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.commit();
 			con.close();
 
 

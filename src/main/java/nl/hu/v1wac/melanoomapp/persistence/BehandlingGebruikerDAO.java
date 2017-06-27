@@ -38,6 +38,8 @@ public class BehandlingGebruikerDAO extends BaseDAO {
 				Gebruiker g = gdao.getGebruiker(gebruikersnaam);
 
 				BehandelingGebruiker newb = new BehandelingGebruiker(s, g, datumafronding);
+				con.commit();
+				con.close();
 				results.add(newb);
 			}
 		} catch (SQLException sqle) {
@@ -64,6 +66,7 @@ public class BehandlingGebruikerDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.commit();
 			con.close();
 
 		} catch (SQLException sqle) {

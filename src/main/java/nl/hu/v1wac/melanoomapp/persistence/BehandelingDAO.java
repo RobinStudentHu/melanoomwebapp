@@ -35,12 +35,12 @@ public class BehandelingDAO extends BaseDAO {
 				Sessie s = sdao.getSessiemetID(sessieID);
 				Behandeling newb = new Behandeling(s, medischeAdvies, medischeVerwijzing);
 				results.add(newb);
+				con.commit();
 				con.close();
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
-
 		return results;
 	}
 
@@ -61,6 +61,7 @@ public class BehandelingDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
+			con.commit();
 			con.close();
 
 		} catch (SQLException sqle) {

@@ -40,7 +40,7 @@ public class GebruikerDAO extends BaseDAO {
 						achternaam);
 				results.add(newGebruiker);
 				con.close();
-			}
+					}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
