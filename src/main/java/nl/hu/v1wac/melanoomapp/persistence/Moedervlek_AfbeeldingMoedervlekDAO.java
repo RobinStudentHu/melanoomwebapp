@@ -25,7 +25,7 @@ public class Moedervlek_AfbeeldingMoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
+			
 
 			while (dbResultSet.next()) {
 				int moedervlekid = dbResultSet.getInt("moedervlekid");
@@ -43,6 +43,7 @@ public class Moedervlek_AfbeeldingMoedervlekDAO extends BaseDAO {
 				results.add(newMoedervlek_AfbeeldingMoedervlek);
 			
 			}
+			con.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

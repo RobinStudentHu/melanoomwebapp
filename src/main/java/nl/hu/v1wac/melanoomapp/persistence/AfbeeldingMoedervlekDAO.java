@@ -24,7 +24,6 @@ public class AfbeeldingMoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
 
 			while (dbResultSet.next()) {
 				int afbeeldingid = dbResultSet.getInt("afbeeldingid");
@@ -36,6 +35,7 @@ public class AfbeeldingMoedervlekDAO extends BaseDAO {
 				AfbeeldingMoedervlek newAfbeeldingMoedervlek = new AfbeeldingMoedervlek(afbeeldingid, afbeelding, s);
 				results.add(newAfbeeldingMoedervlek);
 			}
+			con.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

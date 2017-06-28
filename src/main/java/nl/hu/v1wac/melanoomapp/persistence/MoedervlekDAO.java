@@ -23,7 +23,7 @@ public class MoedervlekDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			con.close();
+			
 
 			while (dbResultSet.next()) {
 				int moedervlekID = dbResultSet.getInt("moedervlekid");
@@ -36,6 +36,7 @@ public class MoedervlekDAO extends BaseDAO {
 				results.add(newMoedervlek);
 				System.out.println(moedervlekID + " " + locatie + " " + groote + " " + verkleuring + " " + isvervormd);
 			}
+			con.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
