@@ -25,8 +25,6 @@ public class GebruikerDAO extends BaseDAO {
 		try (Connection con = super.getConnection()) {
 			Statement stmt = con.createStatement();
 			ResultSet dbResultSet = stmt.executeQuery(query);
-			
-			con.close();
 
 			while (dbResultSet.next()) {
 				String gebruikersnaam = dbResultSet.getString("gebruikersnaam");
